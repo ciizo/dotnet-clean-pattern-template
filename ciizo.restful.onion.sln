@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{413370CB-B35E-4B2F-9247-4BD219E4DEA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{BEC69F42-FADD-4AA9-9541-B238AFCD6258}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{CF54169F-2529-4FB8-953E-81AB9885014A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{2E6A430E-7B15-4672-A89B-AE270C7F8CF0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{48C03126-95A7-4061-8F67-4FE41951B69B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ciizo.Restful.Onion.Api", "src\Application\Ciizo.Restful.Onion.Api\Ciizo.Restful.Onion.Api.csproj", "{AE35A119-66A3-4077-86C5-133E5EDE4054}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ciizo.Restful.Onion.Domain.Core", "src\Domain\Ciizo.Restful.Onion.Domain.Core\Ciizo.Restful.Onion.Domain.Core.csproj", "{3275AFA4-1FD9-4927-8F17-8754FD76AED4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ciizo.Restful.Onion.Domain.Business", "src\Domain\Ciizo.Restful.Onion.Domain.Business\Ciizo.Restful.Onion.Domain.Business.csproj", "{FF96DCEE-76E3-41EA-93BF-0D3C0B01DCB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ciizo.Restful.Onion.Infrastructure", "src\Infrastructure\Ciizo.Restful.Onion.Infrastructure\Ciizo.Restful.Onion.Infrastructure.csproj", "{80BF1FF5-A704-4512-B4F6-863785A71EA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ciizo.Restful.Onion.UnitTests", "tests\Ciizo.Restful.Onion.UnitTests\Ciizo.Restful.Onion.UnitTests.csproj", "{44D7EE37-5518-4B65-A83D-0460CA06BDB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ciizo.Restful.Onion.IntegrationTests", "tests\Ciizo.Restful.Onion.IntegrationTests\Ciizo.Restful.Onion.IntegrationTests.csproj", "{045D72E8-DD2E-4FE5-AEDD-B4479788517C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8542751B-4301-4592-8541-4D18529D4EA8}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE35A119-66A3-4077-86C5-133E5EDE4054}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE35A119-66A3-4077-86C5-133E5EDE4054}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE35A119-66A3-4077-86C5-133E5EDE4054}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE35A119-66A3-4077-86C5-133E5EDE4054}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3275AFA4-1FD9-4927-8F17-8754FD76AED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3275AFA4-1FD9-4927-8F17-8754FD76AED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3275AFA4-1FD9-4927-8F17-8754FD76AED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3275AFA4-1FD9-4927-8F17-8754FD76AED4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF96DCEE-76E3-41EA-93BF-0D3C0B01DCB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF96DCEE-76E3-41EA-93BF-0D3C0B01DCB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF96DCEE-76E3-41EA-93BF-0D3C0B01DCB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF96DCEE-76E3-41EA-93BF-0D3C0B01DCB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80BF1FF5-A704-4512-B4F6-863785A71EA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80BF1FF5-A704-4512-B4F6-863785A71EA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80BF1FF5-A704-4512-B4F6-863785A71EA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80BF1FF5-A704-4512-B4F6-863785A71EA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44D7EE37-5518-4B65-A83D-0460CA06BDB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44D7EE37-5518-4B65-A83D-0460CA06BDB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44D7EE37-5518-4B65-A83D-0460CA06BDB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44D7EE37-5518-4B65-A83D-0460CA06BDB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{045D72E8-DD2E-4FE5-AEDD-B4479788517C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{045D72E8-DD2E-4FE5-AEDD-B4479788517C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{045D72E8-DD2E-4FE5-AEDD-B4479788517C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{045D72E8-DD2E-4FE5-AEDD-B4479788517C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CF54169F-2529-4FB8-953E-81AB9885014A} = {413370CB-B35E-4B2F-9247-4BD219E4DEA5}
+		{2E6A430E-7B15-4672-A89B-AE270C7F8CF0} = {413370CB-B35E-4B2F-9247-4BD219E4DEA5}
+		{48C03126-95A7-4061-8F67-4FE41951B69B} = {413370CB-B35E-4B2F-9247-4BD219E4DEA5}
+		{AE35A119-66A3-4077-86C5-133E5EDE4054} = {CF54169F-2529-4FB8-953E-81AB9885014A}
+		{3275AFA4-1FD9-4927-8F17-8754FD76AED4} = {2E6A430E-7B15-4672-A89B-AE270C7F8CF0}
+		{FF96DCEE-76E3-41EA-93BF-0D3C0B01DCB3} = {2E6A430E-7B15-4672-A89B-AE270C7F8CF0}
+		{80BF1FF5-A704-4512-B4F6-863785A71EA0} = {48C03126-95A7-4061-8F67-4FE41951B69B}
+		{44D7EE37-5518-4B65-A83D-0460CA06BDB1} = {BEC69F42-FADD-4AA9-9541-B238AFCD6258}
+		{045D72E8-DD2E-4FE5-AEDD-B4479788517C} = {BEC69F42-FADD-4AA9-9541-B238AFCD6258}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB26D7E4-8A21-40E7-BA1C-00B96AA95AA6}
+	EndGlobalSection
+EndGlobal
