@@ -47,7 +47,7 @@ namespace Ciizo.Restful.Onion.Domain.Business.User
                 : throw new DataNotFoundException(nameof(Core.Entities.User));
         }
 
-        public async Task<UserSearchResult<UserDto>> SearchUsersAsync(UserSearchCriteria criteria, int page, int pageSize, CancellationToken cancellationToken)
+        public async Task<SearchResult<UserDto>> SearchUsersAsync(UserSearchCriteria criteria, int page, int pageSize, CancellationToken cancellationToken)
         {
             UserSearchCriteriaValidator validator = new();
             await validator.ValidateAndThrowAsync(criteria, cancellationToken);
@@ -67,7 +67,7 @@ namespace Ciizo.Restful.Onion.Domain.Business.User
                 .Select(user => UserDto.FromEntity(user))
                 .ToListAsync(cancellationToken);
 
-            var result = new UserSearchResult<UserDto>
+            var result = new SearchResult<UserDto>
             {
                 Data = matchingUsers,
                 TotalCount = totalCount,

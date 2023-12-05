@@ -9,6 +9,6 @@ namespace Ciizo.Restful.Onion.Domain.Business.User
 
         Task<UserDto> GetUserAsync(Guid id, CancellationToken cancellationToken);
 
-        Task<UserSearchResult<UserDto>> SearchUsersAsync(UserSearchCriteria criteria, int page, int pageSize, CancellationToken cancellationToken);
+        Task<SearchResult<UserDto>> SearchUsersAsync(UserSearchCriteria criteria, int page, int pageSize, CancellationToken cancellationToken);
     }
 }

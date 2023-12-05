@@ -1,6 +1,6 @@
 ﻿namespace Ciizo.Restful.Onion.Domain.Business.Common.Models
 {
-    public record UserSearchResult<T>
+    public record SearchResult<T>
     {
         public IEnumerable<T> Data { get; set; } = Enumerable.Empty<T>();
         public int TotalCount { get; set; }
