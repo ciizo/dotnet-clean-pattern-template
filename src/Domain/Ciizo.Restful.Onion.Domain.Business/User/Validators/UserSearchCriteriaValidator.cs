@@ -3,11 +3,10 @@ using FluentValidation;
 
 namespace Ciizo.Restful.Onion.Domain.Business.User.Validators
 {
-    public class UserCreateDtoValidator : AbstractValidator<UserCreateDto>
+    public class UserSearchCriteriaValidator : AbstractValidator<UserSearchCriteria>
     {
-        public UserCreateDtoValidator()
+        public UserSearchCriteriaValidator()
         {
-            RuleFor(x => x.Email).EmailAddress().NotNull();
             RuleFor(x => x.Name).NotEmpty();
         }
     }

@@ -1,8 +1,11 @@
-﻿using Banking.Domain.Service.Models;
-using Banking.Domain.Service.Validators;
+﻿using Ciizo.Restful.Onion.Domain.Business.Common.Constants;
+using Ciizo.Restful.Onion.Domain.Business.Common.Models;
 using Ciizo.Restful.Onion.Domain.Business.Exceptions;
+using Ciizo.Restful.Onion.Domain.Business.User.Models;
+using Ciizo.Restful.Onion.Domain.Business.User.Validators;
 using Ciizo.Restful.Onion.Domain.Core.Repository;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ciizo.Restful.Onion.Domain.Business.User
 {
@@ -42,6 +45,35 @@ namespace Ciizo.Restful.Onion.Domain.Business.User
             return entity is not null ?
                 UserDto.FromEntity(entity)
                 : throw new DataNotFoundException(nameof(Core.Entities.User));
+        }
+
+        public async Task<UserSearchResult<UserDto>> SearchUsersAsync(UserSearchCriteria criteria, int page, int pageSize, CancellationToken cancellationToken)
+        {
+            UserSearchCriteriaValidator validator = new();
+            await validator.ValidateAndThrowAsync(criteria, cancellationToken);
+
+            var query = _repository.GetQueryable();
+            query = query.Where(x => x.Name.Contains(criteria.Name));
+
+            var totalCount = await query.CountAsync(cancellationToken);
+
+            var totalPages = (int)Math.Ceiling((double)totalCount / pageSize);
+            page = Math.Max(PaginationRules.FirstPage, Math.Min(page, totalPages));
+            pageSize = Math.Min(PaginationRules.MaxPageSize, pageSize);
+
+            var matchingUsers = await query
+                .Skip((page - PaginationRules.FirstPage) * pageSize)
+                .Take(pageSize)
+                .Select(user => UserDto.FromEntity(user))
+                .ToListAsync(cancellationToken);
+
+            var result = new UserSearchResult<UserDto>
+            {
+                Data = matchingUsers,
+                TotalCount = totalCount,
+            };
+
+            return result;
         }
     }
 }

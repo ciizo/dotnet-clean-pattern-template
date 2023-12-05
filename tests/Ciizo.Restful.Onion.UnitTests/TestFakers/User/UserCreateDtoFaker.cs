@@ -1,4 +1,4 @@
-﻿using Banking.Domain.Service.Models;
+﻿using Ciizo.Restful.Onion.Domain.Business.User.Models;
 
 namespace Ciizo.Restful.Onion.UnitTests.TestFakers.User
 {

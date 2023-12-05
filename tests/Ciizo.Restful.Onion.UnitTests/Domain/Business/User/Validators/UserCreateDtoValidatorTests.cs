@@ -1,5 +1,5 @@
-﻿using Banking.Domain.Service.Models;
-using Banking.Domain.Service.Validators;
+﻿using Ciizo.Restful.Onion.Domain.Business.User.Models;
+using Ciizo.Restful.Onion.Domain.Business.User.Validators;
 using Ciizo.Restful.Onion.UnitTests.TestFakers.User;
 using FluentValidation;
 using FluentValidation.TestHelper;

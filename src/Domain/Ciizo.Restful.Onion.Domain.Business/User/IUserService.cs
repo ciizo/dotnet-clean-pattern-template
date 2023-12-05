@@ -1,4 +1,5 @@
-﻿using Banking.Domain.Service.Models;
+﻿using Ciizo.Restful.Onion.Domain.Business.Common.Models;
+using Ciizo.Restful.Onion.Domain.Business.User.Models;
 
 namespace Ciizo.Restful.Onion.Domain.Business.User
 {
@@ -7,5 +8,7 @@ namespace Ciizo.Restful.Onion.Domain.Business.User
         Task<UserDto> CreateUserAsync(UserCreateDto dto, CancellationToken cancellationToken);
 
         Task<UserDto> GetUserAsync(Guid id, CancellationToken cancellationToken);
+
+        Task<UserSearchResult<UserDto>> SearchUsersAsync(UserSearchCriteria criteria, int page, int pageSize, CancellationToken cancellationToken);
     }
 }

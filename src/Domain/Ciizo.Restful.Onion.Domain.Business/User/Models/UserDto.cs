@@ -1,6 +1,4 @@
-﻿using Ciizo.Restful.Onion.Domain.Core.Entities;
-
-namespace Banking.Domain.Service.Models
+﻿namespace Ciizo.Restful.Onion.Domain.Business.User.Models
 {
     public record UserDto(
         Guid Id,
@@ -8,14 +6,14 @@ namespace Banking.Domain.Service.Models
         string Name
         )
     {
-        public static UserDto FromEntity(User entity)
+        public static UserDto FromEntity(Core.Entities.User entity)
         {
             return new UserDto(entity.Id, entity.Email, entity.Name);
         }
 
-        public static User ToEntity(UserDto dto)
+        public static Core.Entities.User ToEntity(UserDto dto)
         {
-            return new User()
+            return new Core.Entities.User()
             {
                 Id = dto.Id,
                 Email = dto.Email,

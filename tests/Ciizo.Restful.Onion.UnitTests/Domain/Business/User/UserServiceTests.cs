@@ -1,6 +1,6 @@
-﻿using Banking.Domain.Service.Models;
-using Ciizo.Restful.Onion.Domain.Business.Exceptions;
+﻿using Ciizo.Restful.Onion.Domain.Business.Exceptions;
 using Ciizo.Restful.Onion.Domain.Business.User;
+using Ciizo.Restful.Onion.Domain.Business.User.Models;
 using Ciizo.Restful.Onion.Domain.Core.Repository;
 using Ciizo.Restful.Onion.UnitTests.TestFakers.User;
 

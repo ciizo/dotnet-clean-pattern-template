@@ -1,15 +1,13 @@
-﻿using Ciizo.Restful.Onion.Domain.Core.Entities;
-
-namespace Banking.Domain.Service.Models
+﻿namespace Ciizo.Restful.Onion.Domain.Business.User.Models
 {
     public record UserCreateDto(
         string Email,
         string Name
         )
     {
-        public static User ToEntity(UserCreateDto dto)
+        public static Core.Entities.User ToEntity(UserCreateDto dto)
         {
-            return new User()
+            return new Core.Entities.User()
             {
                 Email = dto.Email,
                 Name = dto.Name,
