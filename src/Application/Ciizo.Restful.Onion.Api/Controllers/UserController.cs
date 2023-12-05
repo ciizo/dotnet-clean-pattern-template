@@ -22,5 +22,21 @@ namespace Ciizo.Restful.Onion.Api.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost("{id}")]
+        public async Task<IActionResult> GetUserAsync(Guid id, CancellationToken cancellationToken)
+        {
+            var result = await _userService.CreateUserAsync(dto, cancellationToken);
+
+            return Ok(result);
+        }
+
+        [HttpPost("")]
+        public async Task<IActionResult> CreateUserAsync(UserCreateDto dto, CancellationToken cancellationToken)
+        {
+            var result = await _userService.CreateUserAsync(dto, cancellationToken);
+
+            return Ok(result);
+        }
     }
 }

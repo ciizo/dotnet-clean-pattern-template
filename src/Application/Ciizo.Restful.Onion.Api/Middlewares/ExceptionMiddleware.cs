@@ -1,4 +1,5 @@
 ﻿using Ciizo.Restful.Onion.Api.Middlewares.Models;
+using Ciizo.Restful.Onion.Domain.Business.Exceptions;
 using FluentValidation;
 using System.Net;
 using System.Text;
@@ -35,6 +36,7 @@ namespace Ciizo.Restful.Onion.Api.Middlewares
                 UnauthorizedAccessException => HttpStatusCode.Forbidden,
                 ArgumentException => HttpStatusCode.BadRequest,
                 ValidationException => HttpStatusCode.BadRequest,
+                DataNotFoundException => HttpStatusCode.NotFound,
                 _ => HttpStatusCode.InternalServerError,
             });
 
