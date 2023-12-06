@@ -1,11 +1,14 @@
-﻿using Ciizo.Restful.Onion.Domain.Business.Common.Constants;
+﻿using Ciizo.Restful.Onion.Api.Auth;
+using Ciizo.Restful.Onion.Domain.Business.Common.Constants;
 using Ciizo.Restful.Onion.Domain.Business.User;
 using Ciizo.Restful.Onion.Domain.Business.User.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ciizo.Restful.Onion.Api.Controllers
 {
+    [Authorize]
     [Route("api/users")]
     [ApiController]
     public class UserController : ControllerBase
@@ -58,6 +61,7 @@ namespace Ciizo.Restful.Onion.Api.Controllers
             return NoContent();
         }
 
+        [RequireClaim(ClaimTypes.UserType, nameof(UserTypes.Admin))]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUserAsync(Guid id, CancellationToken cancellationToken)
         {
