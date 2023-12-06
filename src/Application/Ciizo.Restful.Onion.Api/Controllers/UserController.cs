@@ -1,6 +1,7 @@
 ﻿using Ciizo.Restful.Onion.Domain.Business.Common.Constants;
 using Ciizo.Restful.Onion.Domain.Business.User;
 using Ciizo.Restful.Onion.Domain.Business.User.Models;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ciizo.Restful.Onion.Api.Controllers
@@ -17,11 +18,11 @@ namespace Ciizo.Restful.Onion.Api.Controllers
         }
 
         [HttpPost("")]
-        public async Task<IActionResult> CreateUserAsync(UserCreateDto dto, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreateUserAsync(UserDto dto, CancellationToken cancellationToken)
         {
             var result = await _userService.CreateUserAsync(dto, cancellationToken);
 
-            return Ok(result);
+            return Created(new Uri(Path.Combine(Request.GetEncodedUrl(), result.Id.ToString())), result);
         }
 
         [HttpGet("{id}")]
@@ -47,6 +48,22 @@ namespace Ciizo.Restful.Onion.Api.Controllers
             var result = await _userService.SearchUsersAsync(criteria, page, pageSize, cancellationToken);
 
             return Ok(result);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> GetUserAsync(Guid id, UserDto dto, CancellationToken cancellationToken)
+        {
+            await _userService.UpdateUserAsync(id, dto, cancellationToken);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUserAsync(Guid id, CancellationToken cancellationToken)
+        {
+            await _userService.DeleteUserAsync(id, cancellationToken);
+
+            return NoContent();
         }
     }
 }

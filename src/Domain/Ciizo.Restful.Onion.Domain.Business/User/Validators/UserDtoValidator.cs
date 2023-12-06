@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace Ciizo.Restful.Onion.Domain.Business.User.Validators
 {
-    public class UserCreateDtoValidator : AbstractValidator<UserCreateDto>
+    public class UserDtoValidator : AbstractValidator<UserDto>
     {
-        public UserCreateDtoValidator()
+        public UserDtoValidator()
         {
             RuleFor(x => x.Email).EmailAddress().NotNull();
             RuleFor(x => x.Name).NotEmpty();

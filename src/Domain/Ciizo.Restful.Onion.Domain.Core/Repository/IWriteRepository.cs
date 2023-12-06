@@ -9,5 +9,7 @@
         void Update(TEntity entity);
 
         void Delete(TEntity entity);
+
+        void DeleteById(object id);
     }
 }

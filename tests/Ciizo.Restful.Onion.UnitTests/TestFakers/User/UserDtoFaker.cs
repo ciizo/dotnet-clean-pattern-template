@@ -2,14 +2,15 @@
 
 namespace Ciizo.Restful.Onion.UnitTests.TestFakers.User
 {
-    public class UserCreateDtoFaker : Faker<UserCreateDto>
+    public class UserDtoFaker : Faker<UserDto>
     {
-        public UserCreateDtoFaker()
+        public UserDtoFaker()
         {
             CustomInstantiator(faker =>
             {
-                return new UserCreateDto
+                return new UserDto
                 (
+                   Id: faker.Random.Guid(),
                    Email: faker.Internet.ExampleEmail(),
                    Name: faker.Name.FullName()
                 );

@@ -6,14 +6,14 @@ using FluentValidation.TestHelper;
 
 namespace Ciizo.Restful.Onion.UnitTests.Domain.Business.User.Validators
 {
-    public class UserCreateDtoValidatorTests
+    public class UserDtoValidatorTests
     {
         [Fact]
         public async Task ValidateAndThrowAsync_ValidRequestData_PassValidation()
         {
-            UserCreateDtoValidator validator = new();
-            UserCreateDtoFaker userCreateDtoFaker = new();
-            UserCreateDto dto = userCreateDtoFaker.Generate();
+            UserDtoValidator validator = new();
+            UserDtoFaker userDtoFaker = new();
+            UserDto dto = userDtoFaker.Generate();
 
             var exception = await Record.ExceptionAsync(async () => await validator.ValidateAndThrowAsync(dto));
 
@@ -27,9 +27,9 @@ namespace Ciizo.Restful.Onion.UnitTests.Domain.Business.User.Validators
         [InlineData(null)]
         public async Task TestValidateAsync_InvalidEmail_ThrowValidationException(string email)
         {
-            UserCreateDtoValidator validator = new();
-            UserCreateDtoFaker userCreateDtoFaker = new();
-            UserCreateDto dto = userCreateDtoFaker.Generate() with { Email = email };
+            UserDtoValidator validator = new();
+            UserDtoFaker userDtoFaker = new();
+            UserDto dto = userDtoFaker.Generate() with { Email = email };
 
             var result = await validator.TestValidateAsync(dto);
 
@@ -42,9 +42,9 @@ namespace Ciizo.Restful.Onion.UnitTests.Domain.Business.User.Validators
         [InlineData(null)]
         public async Task TestValidateAsync_InvalidName_ThrowValidationException(string name)
         {
-            UserCreateDtoValidator validator = new();
-            UserCreateDtoFaker userCreateDtoFaker = new();
-            UserCreateDto dto = userCreateDtoFaker.Generate() with { Name = name };
+            UserDtoValidator validator = new();
+            UserDtoFaker userDtoFaker = new();
+            UserDto dto = userDtoFaker.Generate() with { Name = name };
 
             var result = await validator.TestValidateAsync(dto);
 

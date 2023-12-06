@@ -32,6 +32,23 @@ namespace Ciizo.Restful.Onion.Infrastructure.Persistence.Repository
             _dbSet.Remove(entitiy);
         }
 
+        public void DeleteById(object id)
+        {
+            var entityToDelete = Activator.CreateInstance<TEntity>();
+            var idProperty = typeof(TEntity).GetProperty("Id");
+
+            if (idProperty != null)
+            {
+                idProperty.SetValue(entityToDelete, id);
+                _dbSet.Attach(entityToDelete);
+                _dbSet.Entry(entityToDelete).State = EntityState.Deleted;
+            }
+            else
+            {
+                throw new InvalidOperationException($"Entity type {typeof(TEntity).Name} does not have a property named 'Id'.");
+            }
+        }
+
         public virtual async Task<IEnumerable<TEntity>> GetAsync(
             Expression<Func<TEntity,
             bool>> predicate,

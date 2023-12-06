@@ -18,12 +18,12 @@ namespace Ciizo.Restful.Onion.Domain.Business.User
             _repository = repository;
         }
 
-        public async Task<UserDto> CreateUserAsync(UserCreateDto dto, CancellationToken cancellationToken)
+        public async Task<UserDto> CreateUserAsync(UserDto dto, CancellationToken cancellationToken)
         {
-            UserCreateDtoValidator validator = new();
+            UserDtoValidator validator = new();
             await validator.ValidateAndThrowAsync(dto, cancellationToken);
 
-            var entity = UserCreateDto.ToEntity(dto);
+            var entity = UserDto.ToEntity(dto);
             entity.Created = DateTime.UtcNow;
             entity.CreatedBy = "Test";
 
@@ -33,6 +33,17 @@ namespace Ciizo.Restful.Onion.Domain.Business.User
             return UserDto.FromEntity(entity);
         }
 
+        public async Task DeleteUserAsync(Guid id, CancellationToken cancellationToken)
+        {
+            if (id == default)
+            {
+                throw new ArgumentException("Id is required.");
+            }
+
+            _repository.DeleteById(id);
+            await _repository.SaveChangesAsync(cancellationToken);
+        }
+
         public async Task<UserDto> GetUserAsync(Guid id, CancellationToken cancellationToken)
         {
             if (id == default)
@@ -40,11 +51,10 @@ namespace Ciizo.Restful.Onion.Domain.Business.User
                 throw new ArgumentException("Id is required.");
             }
 
-            var entity = await _repository.GetByIdAsync(id, cancellationToken);
+            var entity = await _repository.GetByIdAsync(id, cancellationToken)
+                ?? throw new DataNotFoundException(nameof(Core.Entities.User));
 
-            return entity is not null ?
-                UserDto.FromEntity(entity)
-                : throw new DataNotFoundException(nameof(Core.Entities.User));
+            return UserDto.FromEntity(entity);
         }
 
         public async Task<SearchResult<UserDto>> SearchUsersAsync(UserSearchCriteria criteria, int page, int pageSize, CancellationToken cancellationToken)
@@ -75,6 +85,28 @@ namespace Ciizo.Restful.Onion.Domain.Business.User
             };
 
             return result;
+        }
+
+        public async Task UpdateUserAsync(Guid id, UserDto dto, CancellationToken cancellationToken)
+        {
+            if (id == default)
+            {
+                throw new ArgumentException("Id is required.");
+            }
+
+            UserDtoValidator validator = new();
+            await validator.ValidateAndThrowAsync(dto, cancellationToken);
+
+            var entity = await _repository.GetByIdAsync(id, cancellationToken)
+                ?? throw new DataNotFoundException(nameof(Core.Entities.User));
+
+            entity.Email = dto.Email;
+            entity.Name = dto.Name;
+            entity.Updated = DateTime.UtcNow;
+            entity.UpdatedBy = "Test";
+
+            _repository.Update(entity);
+            await _repository.SaveChangesAsync(cancellationToken);
         }
     }
 }
