@@ -15,7 +15,7 @@ Have 2 options
 
 JWT parameters
 - key is `ciizojwtsigningkey12345678900000`, endcode the key using UTF-8.  
-- payload  
+- payload, update `exp` to extend the expiration time  
   ```
   {
   "iss": "ciizo",
@@ -42,6 +42,7 @@ disable `UseInMemoryDatabase` config for using real database.
 - Store secrets in Key Vault  
 - Seriog for logging
 - Observability 
+- Docker compose for integration test with real database
 - Parallel testing  
 - Rate limiting  
 - API versioning
