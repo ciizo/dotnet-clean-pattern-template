@@ -25,4 +25,8 @@
     <ProjectReference Include="..\..\Infrastructure\Ciizo.Restful.Onion.Infrastructure\Ciizo.Restful.Onion.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="Ciizo.Restful.Onion.IntegrationTests" />
+  </ItemGroup>
+
 </Project>

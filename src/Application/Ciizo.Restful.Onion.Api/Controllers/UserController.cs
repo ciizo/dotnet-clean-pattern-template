@@ -51,7 +51,7 @@ namespace Ciizo.Restful.Onion.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> GetUserAsync(Guid id, UserDto dto, CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateUserAsync(Guid id, UserDto dto, CancellationToken cancellationToken)
         {
             await _userService.UpdateUserAsync(id, dto, cancellationToken);
 
