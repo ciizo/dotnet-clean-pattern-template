@@ -1,8 +1,10 @@
-﻿using Ciizo.Restful.Onion.Domain.Business.Exceptions;
+﻿using Ciizo.Restful.Onion.Domain.Business.Common.Models;
+using Ciizo.Restful.Onion.Domain.Business.Exceptions;
 using Ciizo.Restful.Onion.Domain.Business.User;
 using Ciizo.Restful.Onion.Domain.Business.User.Models;
 using Ciizo.Restful.Onion.Domain.Core.Repository;
 using Ciizo.Restful.Onion.UnitTests.TestFakers.User;
+using MockQueryable.Moq;
 
 namespace Ciizo.Restful.Onion.UnitTests.Domain.Business.User
 {
@@ -30,7 +32,6 @@ namespace Ciizo.Restful.Onion.UnitTests.Domain.Business.User
             var expected = new UserDto(result.Id, userCreateDto.Email, userCreateDto.Name);
             result.Should().BeEquivalentTo(expected);
         }
-
 
         [Fact]
         public async Task GetUserAsync_InvalidId_ThrowArgumentException()
@@ -70,6 +71,26 @@ namespace Ciizo.Restful.Onion.UnitTests.Domain.Business.User
             var result = await _userService.GetUserAsync(id, CancellationToken.None);
 
             var expected = new UserDto(id, entity.Email, entity.Name);
+            result.Should().BeEquivalentTo(expected);
+        }
+
+        [Fact]
+        public async Task SearchUsersAsync_ValidId_ReturnUserDto()
+        {
+            SetUp();
+            UserFaker userFaker = new();
+            var userEntities = userFaker.Generate(5);
+            var searchCriteria = new UserSearchCriteria { Name = userEntities[2].Name };
+            var usersQueryable = userEntities.AsQueryable().BuildMock();
+            _userRepositoryMock.Setup(x => x.GetQueryable()).Returns(usersQueryable);
+
+            var result = await _userService.SearchUsersAsync(searchCriteria, 1, 3, CancellationToken.None);
+
+            var expected = new SearchResult<UserDto>
+            {
+                Data = new List<UserDto>() { UserDto.FromEntity(userEntities[2]) },
+                TotalCount = 1,
+            };
             result.Should().BeEquivalentTo(expected);
         }
     }

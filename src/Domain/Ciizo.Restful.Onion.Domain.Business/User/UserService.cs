@@ -53,7 +53,8 @@ namespace Ciizo.Restful.Onion.Domain.Business.User
             await validator.ValidateAndThrowAsync(criteria, cancellationToken);
 
             var query = _repository.GetQueryable();
-            query = query.Where(x => x.Name.Contains(criteria.Name));
+            query = query.Where(x => x.Name.Contains(criteria.Name))
+                        .OrderBy(x => x.Id);
 
             var totalCount = await query.CountAsync(cancellationToken);
 
