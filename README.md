@@ -14,6 +14,7 @@ Have 2 options
 - use `dotnet user-jwts`, see [this link](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/jwt-authn?view=aspnetcore-8.0&tabs=windows).
 
 JWT parameters
+- algorithm HS256
 - key is `ciizojwtsigningkey12345678900000`, endcode the key using UTF-8.  
 - payload, update `exp` to extend the expiration time  
   ```
