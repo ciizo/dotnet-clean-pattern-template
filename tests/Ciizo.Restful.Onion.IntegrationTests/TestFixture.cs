@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
+using System.Net.Http.Headers;
 
 namespace Ciizo.Restful.Onion.IntegrationTests
 {
@@ -17,7 +18,11 @@ namespace Ciizo.Restful.Onion.IntegrationTests
 
         public HttpClient GetHttpClient()
         {
-            return _factory.CreateClient();
+            var _httpClient = _factory.CreateClient();
+            var token = JwtTokenGenerator.GenerateJwtToken();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            return _httpClient;
         }
 
         public IServiceScope CreateScope()
