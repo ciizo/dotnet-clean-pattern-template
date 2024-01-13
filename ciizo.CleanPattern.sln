@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{413370CB-B35E-4B2F-9247-4BD219E4DEA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{BEC69F42-FADD-4AA9-9541-B238AFCD6258}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{CF54169F-2529-4FB8-953E-81AB9885014A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{2E6A430E-7B15-4672-A89B-AE270C7F8CF0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{48C03126-95A7-4061-8F67-4FE41951B69B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8542751B-4301-4592-8541-4D18529D4EA8}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ciizo.CleanPattern.Api", "src\Application\Ciizo.CleanPattern.Api\Ciizo.CleanPattern.Api.csproj", "{C0B99B1F-6213-409C-8F47-609047BBA43C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ciizo.CleanPattern.Domain.Business", "src\Domain\Ciizo.CleanPattern.Domain.Business\Ciizo.CleanPattern.Domain.Business.csproj", "{EFED2B53-6636-4170-8DF5-697CAB8266F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ciizo.CleanPattern.Domain.Core", "src\Domain\Ciizo.CleanPattern.Domain.Core\Ciizo.CleanPattern.Domain.Core.csproj", "{617AA66C-ECC7-4462-B199-CAD6336267F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ciizo.CleanPattern.Infrastructure", "src\Infrastructure\Ciizo.CleanPattern.Infrastructure\Ciizo.CleanPattern.Infrastructure.csproj", "{4189B9BB-C6F6-49FB-BCD0-A5F89912FFFE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ciizo.CleanPattern.IntegrationTests", "tests\Ciizo.CleanPattern.IntegrationTests\Ciizo.CleanPattern.IntegrationTests.csproj", "{20B77EA6-0446-4766-8F4A-E11C378088AD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ciizo.CleanPattern.UnitTests", "tests\Ciizo.CleanPattern.UnitTests\Ciizo.CleanPattern.UnitTests.csproj", "{45705D48-BE32-416F-89EA-532C182486B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0B99B1F-6213-409C-8F47-609047BBA43C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0B99B1F-6213-409C-8F47-609047BBA43C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0B99B1F-6213-409C-8F47-609047BBA43C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0B99B1F-6213-409C-8F47-609047BBA43C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFED2B53-6636-4170-8DF5-697CAB8266F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFED2B53-6636-4170-8DF5-697CAB8266F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFED2B53-6636-4170-8DF5-697CAB8266F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFED2B53-6636-4170-8DF5-697CAB8266F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{617AA66C-ECC7-4462-B199-CAD6336267F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{617AA66C-ECC7-4462-B199-CAD6336267F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{617AA66C-ECC7-4462-B199-CAD6336267F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{617AA66C-ECC7-4462-B199-CAD6336267F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4189B9BB-C6F6-49FB-BCD0-A5F89912FFFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4189B9BB-C6F6-49FB-BCD0-A5F89912FFFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4189B9BB-C6F6-49FB-BCD0-A5F89912FFFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4189B9BB-C6F6-49FB-BCD0-A5F89912FFFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20B77EA6-0446-4766-8F4A-E11C378088AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20B77EA6-0446-4766-8F4A-E11C378088AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20B77EA6-0446-4766-8F4A-E11C378088AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20B77EA6-0446-4766-8F4A-E11C378088AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45705D48-BE32-416F-89EA-532C182486B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45705D48-BE32-416F-89EA-532C182486B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45705D48-BE32-416F-89EA-532C182486B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45705D48-BE32-416F-89EA-532C182486B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CF54169F-2529-4FB8-953E-81AB9885014A} = {413370CB-B35E-4B2F-9247-4BD219E4DEA5}
+		{2E6A430E-7B15-4672-A89B-AE270C7F8CF0} = {413370CB-B35E-4B2F-9247-4BD219E4DEA5}
+		{48C03126-95A7-4061-8F67-4FE41951B69B} = {413370CB-B35E-4B2F-9247-4BD219E4DEA5}
+		{C0B99B1F-6213-409C-8F47-609047BBA43C} = {CF54169F-2529-4FB8-953E-81AB9885014A}
+		{EFED2B53-6636-4170-8DF5-697CAB8266F9} = {2E6A430E-7B15-4672-A89B-AE270C7F8CF0}
+		{617AA66C-ECC7-4462-B199-CAD6336267F3} = {2E6A430E-7B15-4672-A89B-AE270C7F8CF0}
+		{4189B9BB-C6F6-49FB-BCD0-A5F89912FFFE} = {48C03126-95A7-4061-8F67-4FE41951B69B}
+		{20B77EA6-0446-4766-8F4A-E11C378088AD} = {BEC69F42-FADD-4AA9-9541-B238AFCD6258}
+		{45705D48-BE32-416F-89EA-532C182486B0} = {BEC69F42-FADD-4AA9-9541-B238AFCD6258}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB26D7E4-8A21-40E7-BA1C-00B96AA95AA6}
+	EndGlobalSection
+EndGlobal
