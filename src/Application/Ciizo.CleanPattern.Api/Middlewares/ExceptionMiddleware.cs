@@ -30,10 +30,7 @@ namespace Ciizo.CleanPattern.Api.Middlewares
         {
             context.Response.ContentType = "application/json";
 
-            var error = new ValidationProblemDetails
-            {
-                //Type =,
-            };
+            var error = new ValidationProblemDetails();
 
             if (exception is ValidationException)
             {
