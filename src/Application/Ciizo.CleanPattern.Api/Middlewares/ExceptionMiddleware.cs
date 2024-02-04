@@ -1,8 +1,7 @@
-﻿using Ciizo.CleanPattern.Api.Middlewares.Models;
-using Ciizo.CleanPattern.Domain.Business.Exceptions;
+﻿using Ciizo.CleanPattern.Domain.Business.Exceptions;
 using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using System.Net;
-using System.Text;
 
 namespace Ciizo.CleanPattern.Api.Middlewares
 {
@@ -31,7 +30,24 @@ namespace Ciizo.CleanPattern.Api.Middlewares
         {
             context.Response.ContentType = "application/json";
 
-            context.Response.StatusCode = (int)(exception switch
+            var error = new ValidationProblemDetails
+            {
+                //Type =,
+            };
+
+            if (exception is ValidationException)
+            {
+                foreach (var vex in ((ValidationException)exception).Errors)
+                {
+                    error.Errors.Add(vex.PropertyName, new[] { vex.ErrorMessage });
+                }
+            }
+            else
+            {
+                error.Detail = exception.Message;
+            }
+
+            error.Status = (int)(exception switch
             {
                 UnauthorizedAccessException => HttpStatusCode.Forbidden,
                 ArgumentException => HttpStatusCode.BadRequest,
@@ -40,11 +56,12 @@ namespace Ciizo.CleanPattern.Api.Middlewares
                 _ => HttpStatusCode.InternalServerError,
             });
 
-            await context.Response.WriteAsync(new ErrorDetails()
-            {
-                StatusCode = context.Response.StatusCode,
-                Message = exception.Message
-            }.ToString(), Encoding.UTF8);
+            await context.Response.WriteAsJsonAsync(error);
+            //await context.Response.WriteAsync(new ErrorDetails()
+            //{
+            //    StatusCode = context.Response.StatusCode,
+            //    Message = exception.Message
+            //}.ToString(), Encoding.UTF8);
         }
     }
 }

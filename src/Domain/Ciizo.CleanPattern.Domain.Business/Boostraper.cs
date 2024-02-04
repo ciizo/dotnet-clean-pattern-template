@@ -1,5 +1,4 @@
-﻿using Ciizo.CleanPattern.Domain.Business.User;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Ciizo.CleanPattern.Domain.Business
 {
@@ -7,7 +6,8 @@ namespace Ciizo.CleanPattern.Domain.Business
     {
         public static void RegisterBusinessServices(this IServiceCollection services)
         {
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<User.IUserService, User.UserService>();
+            services.AddScoped<UserResultPattern.IUserService, UserResultPattern.UserService>();
         }
     }
 }
