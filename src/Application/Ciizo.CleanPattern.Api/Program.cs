@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddJwtAuthentication();
 builder.Services.AddAuthorization();
+builder.Services.AddApiUrlVersioning();
 
 // Add services to the container.
 builder.Services.RegisterBusinessServices();
@@ -24,6 +25,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    //app.MapSwagger().RequireAuthorization();
     app.InitDatabase(builder.Configuration);
 }
 

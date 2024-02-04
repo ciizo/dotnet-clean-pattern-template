@@ -1,4 +1,5 @@
-﻿using Ciizo.CleanPattern.Api.Middlewares;
+﻿using Asp.Versioning;
+using Ciizo.CleanPattern.Api.Middlewares;
 using Ciizo.CleanPattern.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -76,6 +77,23 @@ namespace Ciizo.CleanPattern.Api
                         Array.Empty<string>()
                     }
                 });
+            });
+        }
+
+        public static void AddApiUrlVersioning(this IServiceCollection services)
+        {
+            services.AddApiVersioning(options =>
+            {
+                options.DefaultApiVersion = new ApiVersion(1);
+                options.ReportApiVersions = true;
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.ApiVersionReader = ApiVersionReader.Combine(
+                    new UrlSegmentApiVersionReader(),
+                    new HeaderApiVersionReader("X-Api-Version"));
+            }).AddApiExplorer(options =>
+            {
+                options.GroupNameFormat = "'v'VVV";
+                options.SubstituteApiVersionInUrl = true;
             });
         }
     }

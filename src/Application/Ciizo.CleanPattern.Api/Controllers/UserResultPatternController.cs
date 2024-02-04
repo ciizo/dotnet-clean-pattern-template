@@ -1,4 +1,5 @@
-﻿using Ciizo.CleanPattern.Domain.Business.Common.Constants;
+﻿using Asp.Versioning;
+using Ciizo.CleanPattern.Domain.Business.Common.Constants;
 using Ciizo.CleanPattern.Domain.Business.UserResultPattern;
 using Ciizo.CleanPattern.Domain.Business.UserResultPattern.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -6,8 +7,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Ciizo.CleanPattern.Api.Controllers
 {
+    [ApiVersion(1)]
     //[Authorize]
-    [Route("api/users-result-pattern")]
+    [Route("api/v{v:apiVersion}/users-result-pattern")]
     [ApiController]
     public class UserResultPatternController : ControllerBase
     {
