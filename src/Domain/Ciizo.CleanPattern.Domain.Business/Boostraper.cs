@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace Ciizo.CleanPattern.Domain.Business
 {
@@ -8,6 +9,8 @@ namespace Ciizo.CleanPattern.Domain.Business
         {
             services.AddScoped<User.IUserService, User.UserService>();
             services.AddScoped<UserResultPattern.IUserService, UserResultPattern.UserService>();
+
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         }
     }
 }
