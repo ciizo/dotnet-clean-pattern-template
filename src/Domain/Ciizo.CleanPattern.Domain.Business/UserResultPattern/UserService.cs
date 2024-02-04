@@ -104,7 +104,9 @@ namespace Ciizo.CleanPattern.Domain.Business.UserResultPattern
             }
 
             UserDtoValidator validator = new();
-            await validator.ValidateAndThrowAsync(dto, cancellationToken);
+            var validation = await validator.ValidateAsync(dto, cancellationToken);
+            if (!validation.IsValid)
+                return new ValidationException(validation.Errors);
 
             var entity = await _repository.GetByIdAsync(id, cancellationToken);
             if (entity is null)
